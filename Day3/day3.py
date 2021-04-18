@@ -1,41 +1,34 @@
-terrain = open("../Day 3/example.txt").read().splitlines()
-
-def trees(increment):
+terrain = open("Day3\input.txt").read().splitlines()
+answer = 1
+a = (1, 1)
+b = (3, 1)
+c = (5, 1)
+d = (7, 1)
+e = (1, 2)
+variables = [a, b, c, d, e]
+product = []
+def trees(slope):
+    x = 0
+    y = 0
+    dx, dy = slope
     trees = 0
-    dx = 0
-    if increment == 6:
-        dx = 1
-    print(increment)
-    for i in terrain:
-        if dx > 30:
-            print(dx)
-            dx -= 31
-            print(dx)
-        if '#' in i[dx]:
-            trees += 1
-        dx += increment
+    for i in range(len(terrain)):
+        if x > (len(terrain[0]) - 1):
+            x -= len(terrain[0])
+        if y > len(terrain):
+            pass
+        else:
+            if terrain[y][x] == "#":
+                trees += 1
+        x += dx
+        y += dy
     return trees
-a = trees(1)
-b = trees(3)
-c = trees(5)
-d = trees(6)
 
-trees = 0
-dx = 1
-idk = 0
-for i in terrain:
-    if dx > 30:
-        dx -= 31
-    if idk % 2 != 0:
-        if "#" in i[dx]:
-            trees += 1
-        dx += 1    
-    idk += 1    
-e = trees
+for i in variables:
+    listItem = trees(i)
+    product.append(listItem)
+print(product)
 
-
-
-
-print(a, b, c, d, e)
-
-
+for i in range(len(product)):
+    answer *= product[i]
+print(answer)

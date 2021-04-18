@@ -1,4 +1,4 @@
-passwords = open("fuckthis.txt").read().splitlines()
+passwords = open("Day2/fuckthis.txt").read().splitlines()
 minimum = []
 maximum = []
 letter = []
@@ -26,8 +26,6 @@ def validator(password, z):
     for words in password:
         if (words[int(minimum[z])-1] == letter[z] and not words[int(maximum[z])-1] == letter[z]) or ((not words[int(minimum[z])-1] == letter[z] and words[int(maximum[z])-1] == letter[z])):
             x += 1
-        
-         
         z += 1
 validator(password, z)
 
